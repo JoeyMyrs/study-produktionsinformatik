@@ -6,8 +6,6 @@ services:
       - TZ=Europe/Amsterdam
     ports:
       - "1880:1880"
-    networks:
-      - node-red-net
     volumes:
       - node-red-data:/data
   influxdb:
@@ -42,7 +40,3 @@ volumes:
       type: none
       device: ./docker-volumes/grafana-data
       o: bind
-
-
-networks:
-  node-red-net:

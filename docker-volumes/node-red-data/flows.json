@@ -1,0 +1,93 @@
+[
+    {
+        "id": "de1d362b6add02c8",
+        "type": "tab",
+        "label": "Smartfactory_MPS08_MPS03",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "658e7acbc1fcd9c6",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://131.173.65.46:4840/",
+        "secpol": "None",
+        "secmode": "None",
+        "none": false,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "fd943775f57faf9f",
+        "type": "OpcUa-Client",
+        "z": "de1d362b6add02c8",
+        "endpoint": "658e7acbc1fcd9c6",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "name": "Read Client",
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "98e12b06f48a646c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a7ccb8896f95adfa",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Read i10000",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10000;datatype=Boolean",
+        "x": 210,
+        "y": 220,
+        "wires": [
+            [
+                "fd943775f57faf9f"
+            ]
+        ]
+    },
+    {
+        "id": "98e12b06f48a646c",
+        "type": "debug",
+        "z": "de1d362b6add02c8",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 220,
+        "wires": []
+    }
+]

@@ -1,1 +1,23 @@
-#
+
+services:
+  node-red:
+    build: ./docker-files/node-red
+    environment:
+      - TZ=Europe/Amsterdam
+    ports:
+      - "1880:1880"
+    networks:
+      - node-red-net
+    volumes:
+      - node-red-data:/data
+
+volumes:
+  node-red-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./docker-volumes/node-red-data
+      o: bind
+
+networks:
+  node-red-net:

@@ -10,6 +10,18 @@ services:
       - node-red-net
     volumes:
       - node-red-data:/data
+  influxdb:
+    build: ./docker-files/influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+  grafana:
+    build: ./docker-files/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
 
 volumes:
   node-red-data:
@@ -18,6 +30,19 @@ volumes:
       type: none
       device: ./docker-volumes/node-red-data
       o: bind
+  influxdb-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./docker-volumes/influxdb-data
+      o: bind
+  grafana-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./docker-volumes/grafana-data
+      o: bind
+
 
 networks:
   node-red-net:

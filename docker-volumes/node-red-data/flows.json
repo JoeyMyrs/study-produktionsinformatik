@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "fab2d58a06cfd3d1",
+        "type": "tab",
+        "label": "Hello_World",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "658e7acbc1fcd9c6",
         "type": "OpcUa-Endpoint",
         "endpoint": "opc.tcp://131.173.65.46:4840/",
@@ -18,6 +26,122 @@
         "usercert": false,
         "usercertificate": "",
         "userprivatekey": ""
+    },
+    {
+        "id": "df028ab389c68fbf",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "12c5af6d4a02c677",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD.MM.YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "5b34982845f30fe4",
+        "type": "ui_group",
+        "name": "Standard",
+        "tab": "df028ab389c68fbf",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "fd943775f57faf9f",
@@ -50,30 +174,6 @@
         ]
     },
     {
-        "id": "a7ccb8896f95adfa",
-        "type": "inject",
-        "z": "de1d362b6add02c8",
-        "name": "Read i10000",
-        "props": [
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "ns=4;i=10000;datatype=Boolean",
-        "x": 210,
-        "y": 220,
-        "wires": [
-            [
-                "fd943775f57faf9f"
-            ]
-        ]
-    },
-    {
         "id": "98e12b06f48a646c",
         "type": "debug",
         "z": "de1d362b6add02c8",
@@ -88,6 +188,104 @@
         "statusType": "auto",
         "x": 730,
         "y": 220,
+        "wires": []
+    },
+    {
+        "id": "c3e8714f05f599f9",
+        "type": "ui_button",
+        "z": "de1d362b6add02c8",
+        "name": "",
+        "group": "5b34982845f30fe4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Read i10000",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "ns=4;i=10000;datatype=Boolean",
+        "topicType": "str",
+        "x": 250,
+        "y": 220,
+        "wires": [
+            [
+                "fd943775f57faf9f"
+            ]
+        ]
+    },
+    {
+        "id": "bc4e12c887de4718",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Read i10000",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10000;datatype=Boolean",
+        "x": 250,
+        "y": 280,
+        "wires": [
+            [
+                "fd943775f57faf9f"
+            ]
+        ]
+    },
+    {
+        "id": "68d2962d85592881",
+        "type": "inject",
+        "z": "fab2d58a06cfd3d1",
+        "name": "Hello World",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello World",
+        "payloadType": "str",
+        "x": 230,
+        "y": 200,
+        "wires": [
+            [
+                "7dc08279ba6f31da"
+            ]
+        ]
+    },
+    {
+        "id": "7dc08279ba6f31da",
+        "type": "debug",
+        "z": "fab2d58a06cfd3d1",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 200,
         "wires": []
     }
 ]

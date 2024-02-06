@@ -44,3 +44,4 @@ sudo chown -R $USER:$USER ./study-produktionsinformatik
 ```
 chmod +x start.sh stop.sh
 ```
+

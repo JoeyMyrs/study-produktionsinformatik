@@ -48,7 +48,7 @@ sudo chown -R $USER:$USER ./study-produktionsinformatik
 ```
 ### Make start and stop script executable
 ```
-chmod +x start.sh stop.sh
+chmod +x ./study-produktionsinformatik/start.sh ./study-produktionsinformatik/stop.sh
 ```
 ## Run Smartfactory
 ### Start Smartfactory

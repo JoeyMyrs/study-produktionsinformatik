@@ -1,4 +1,3 @@
-
 services:
   node-red:
     build: ./docker-files/node-red
@@ -16,6 +15,7 @@ services:
       - influxdb-data:/var/lib/influxdb2
   grafana:
     build: ./docker-files/grafana
+    user: "1000" # place user id of hostsystem
     ports:
       - "3000:3000"
     volumes:
@@ -25,18 +25,18 @@ volumes:
   node-red-data:
     driver: local
     driver_opts:
-      type: none
+      type: volume
       device: ./docker-volumes/node-red-data
       o: bind
   influxdb-data:
     driver: local
     driver_opts:
-      type: none
+      type: volume
       device: ./docker-volumes/influxdb-data
       o: bind
   grafana-data:
     driver: local
     driver_opts:
-      type: none
+      type: volume
       device: ./docker-volumes/grafana-data
       o: bind

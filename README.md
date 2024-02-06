@@ -1,3 +1,9 @@
+# Auto install
+## Run install.sh script on local machine
+```
+./install.sh
+```
+# Manuell install
 ## Install and configure Docker
 ### Install updates
 ```

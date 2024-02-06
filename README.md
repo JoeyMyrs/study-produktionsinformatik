@@ -44,3 +44,12 @@ sudo chown -R $USER:$USER ./study-produktionsinformatik
 ```
 chmod +x start.sh stop.sh
 ```
+## Run Smartfactory
+### Start Smartfactory
+```
+./start.sh
+```
+### Stop Smartfactory
+```
+./stop.sh
+```

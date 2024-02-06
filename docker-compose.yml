@@ -15,7 +15,7 @@ services:
       - influxdb-data:/var/lib/influxdb2
   grafana:
     build: ./docker-files/grafana
-    user: "1000" # place user id of hostsystem
+    user: ${UserID} # env variable for user id of the hostsystem
     ports:
       - "3000:3000"
     volumes:

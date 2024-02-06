@@ -24,3 +24,5 @@ sudo gpasswd -a $USER docker
 git clone https://github.com/JoeyMyrs/study-produktionsinformatik.git .
 
 sudo chown -R $USER:$USER ./study-produktionsinformatik
+
+chmod +x start.sh stop.sh

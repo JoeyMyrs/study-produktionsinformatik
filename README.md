@@ -1,9 +1,9 @@
-# Auto install
+# Auto install (Ubuntu 22.04 LTS)
 ## Run install.sh script on local machine
 ```
 ./install.sh
 ```
-# Manuell install
+# Manuell install (Ubuntu 22.04 LTS)
 ## Install and configure Docker
 ### Install updates
 ```

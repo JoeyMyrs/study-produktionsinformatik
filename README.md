@@ -1,4 +1,7 @@
 # Installation instructions (Ubuntu 22.04 LTS)
+## Requirements
+- Linux machine (This installation instructions are specifically for Ubuntu 22.04 LTS, can be different for other distributions)
+- git has to be installed and configured on the machine
 ## Install and configure Docker
 ### Install updates
 ```

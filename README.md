@@ -51,11 +51,11 @@ sudo chown -R $USER:$USER ./study-produktionsinformatik
 chmod +x ./study-produktionsinformatik/start.sh ./study-produktionsinformatik/stop.sh
 ```
 ## Run Smartfactory
-### Start Smartfactory
+### Start Docker Container
 ```
 ./start.sh
 ```
-### Stop Smartfactory
+### Stop Docker Container
 ```
 ./stop.sh
 ```

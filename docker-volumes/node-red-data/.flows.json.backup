@@ -44,7 +44,8 @@
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "darkTheme": {
                 "default": "#097479",
@@ -162,9 +163,9 @@
         "maxMessageSize": 8192,
         "receiveBufferSize": 8192,
         "sendBufferSize": 8192,
-        "name": "Read Client",
-        "x": 530,
-        "y": 220,
+        "name": "Read Client MSP08",
+        "x": 610,
+        "y": 140,
         "wires": [
             [
                 "98e12b06f48a646c"
@@ -185,35 +186,341 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
-        "y": 220,
+        "x": 850,
+        "y": 140,
         "wires": []
     },
     {
-        "id": "c3e8714f05f599f9",
-        "type": "ui_button",
+        "id": "bc4e12c887de4718",
+        "type": "inject",
         "z": "de1d362b6add02c8",
-        "name": "",
-        "group": "5b34982845f30fe4",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Read i10000",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
+        "name": "Read MSP08 WorkpieceAvailable",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
         "topic": "ns=4;i=10000;datatype=Boolean",
-        "topicType": "str",
-        "x": 250,
-        "y": 220,
+        "x": 230,
+        "y": 140,
         "wires": [
             [
                 "fd943775f57faf9f"
+            ]
+        ]
+    },
+    {
+        "id": "3a2b623ce6daa93b",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Write MSP08 ExtendGripper True",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10104;datatype=Boolean",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 230,
+        "y": 320,
+        "wires": [
+            [
+                "97e2972e5b6a8d57"
+            ]
+        ]
+    },
+    {
+        "id": "97e2972e5b6a8d57",
+        "type": "OpcUa-Client",
+        "z": "de1d362b6add02c8",
+        "endpoint": "658e7acbc1fcd9c6",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "name": "Write Client MSP08",
+        "x": 610,
+        "y": 320,
+        "wires": [
+            [
+                "98e12b06f48a646c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "05fd2aa0d38cdd63",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Write MSP08 OpenGripper True",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10127;datatype=Boolean",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 230,
+        "y": 380,
+        "wires": [
+            [
+                "97e2972e5b6a8d57"
+            ]
+        ]
+    },
+    {
+        "id": "dfb612fa36a77182",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Read MSP08 GripperExtended",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10004;datatype=Boolean",
+        "x": 230,
+        "y": 200,
+        "wires": [
+            [
+                "fd943775f57faf9f"
+            ]
+        ]
+    },
+    {
+        "id": "7bc9e880b3c88e5c",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Read MSP08 GripperReacted",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10005;datatype=Boolean",
+        "x": 220,
+        "y": 260,
+        "wires": [
+            [
+                "fd943775f57faf9f"
+            ]
+        ]
+    },
+    {
+        "id": "c867ab0658dcee0c",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Write MSP08 OpenGripper False",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10127;datatype=Boolean",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 230,
+        "y": 500,
+        "wires": [
+            [
+                "97e2972e5b6a8d57"
+            ]
+        ]
+    },
+    {
+        "id": "fc51f9eda849db95",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Write MSP08 ExtendGripper False",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10104;datatype=Boolean",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 240,
+        "y": 440,
+        "wires": [
+            [
+                "97e2972e5b6a8d57"
+            ]
+        ]
+    },
+    {
+        "id": "c28ee6a2ef54f1f4",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Write MSP08 HandlingToUpstramStation False",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10124;datatype=Boolean",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 280,
+        "y": 580,
+        "wires": [
+            [
+                "97e2972e5b6a8d57"
+            ]
+        ]
+    },
+    {
+        "id": "7f4d1b88c3941c70",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Write MSP08 HandlingToDownstreamStation False",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10125;datatype=Boolean",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 290,
+        "y": 620,
+        "wires": [
+            [
+                "97e2972e5b6a8d57"
+            ]
+        ]
+    },
+    {
+        "id": "0f70ea8faa196367",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Write MSP08 HandlingToUpstramStation True",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10124;datatype=Boolean",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 270,
+        "y": 660,
+        "wires": [
+            [
+                "97e2972e5b6a8d57"
+            ]
+        ]
+    },
+    {
+        "id": "ad3d562262b3b78c",
+        "type": "inject",
+        "z": "de1d362b6add02c8",
+        "name": "Write MSP08 HandlingToDownstreamStation True",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10125;datatype=Boolean",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 280,
+        "y": 700,
+        "wires": [
+            [
+                "97e2972e5b6a8d57"
             ]
         ]
     },

@@ -32,7 +32,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 ```
 sudo gpasswd -a $USER docker
 ```
-## Install and configure Smartfactory
+## Install and configure Docker infrastructure for Smartfactory
 ### Clone repository to local machine
 ```
 git clone https://github.com/JoeyMyrs/study-produktionsinformatik.git ./study-produktionsinformatik
@@ -45,12 +45,12 @@ sudo chown -R $USER:$USER ./study-produktionsinformatik
 ```
 chmod +x ./study-produktionsinformatik/start.sh ./study-produktionsinformatik/stop.sh
 ```
-## Run Smartfactory
-### Start Docker Container
+## Run Docker infrastructure
+### Start
 ```
 ./start.sh
 ```
-### Stop Docker Container
+### Stop
 ```
 ./stop.sh
 ```

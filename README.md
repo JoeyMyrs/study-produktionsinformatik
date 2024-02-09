@@ -52,11 +52,11 @@ sudo chown -R $USER:$USER ./study-produktionsinformatik
 chmod +x ./study-produktionsinformatik/start.sh ./study-produktionsinformatik/stop.sh
 ```
 ## Run Docker infrastructure for Smartfactory
-### Start
+### Start infrastructure
 ```
 ./start.sh
 ```
-### Stop
+### Stop infrastructure
 ```
 ./stop.sh
 ```

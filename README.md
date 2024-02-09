@@ -2,6 +2,10 @@
 ## Requirements
 - Linux machine (This installation instructions are specifically for Ubuntu 22.04 LTS, can be different for other distributions)
 - git has to be installed and configured on the machine
+```
+  git config --global user.name "Max Mustermann"
+  git config --global user.email "max.mustermann@gmail.com"
+```
 ## Install and configure Docker
 ### Install updates
 ```
@@ -13,7 +17,6 @@ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker c
 ```
 ### Add Docker's official GPG key (Only for Ubuntu, see docker documentation)
 ```
-sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
@@ -25,11 +28,11 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
+sudo apt update && sudo apt upgrade
 ```
 ### Install Docker packages
 ```
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 ### Add current user to Docker group
 ```
@@ -48,7 +51,7 @@ sudo chown -R $USER:$USER ./study-produktionsinformatik
 ```
 chmod +x ./study-produktionsinformatik/start.sh ./study-produktionsinformatik/stop.sh
 ```
-## Run Docker infrastructure
+## Run Docker infrastructure for Smartfactory
 ### Start
 ```
 ./start.sh
@@ -57,3 +60,7 @@ chmod +x ./study-produktionsinformatik/start.sh ./study-produktionsinformatik/st
 ```
 ./stop.sh
 ```
+### Access infrastructure
+- Node-RED: http://localhost:1880/
+- InfluxDB: http://localhost:8086/
+- Grafana: http://localhost:3000/

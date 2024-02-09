@@ -54,10 +54,12 @@ chmod +x ./study-produktionsinformatik/start.sh ./study-produktionsinformatik/st
 ## Run Docker infrastructure for Smartfactory
 ### Start infrastructure
 ```
+cd study-produktionsinformatik
 ./start.sh
 ```
 ### Stop infrastructure
 ```
+cd study-produktionsinformatik
 ./stop.sh
 ```
 ### Access infrastructure

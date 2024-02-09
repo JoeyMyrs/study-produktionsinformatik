@@ -1,4 +1,4 @@
-# Manuell install (Ubuntu 22.04 LTS)
+# Installation instructions (Ubuntu 22.04 LTS)
 ## Install and configure Docker
 ### Install updates
 ```

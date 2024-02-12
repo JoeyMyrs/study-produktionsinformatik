@@ -1,1 +1,1 @@
-UserID=$(id -u) docker compose up --build -d
+UserID=$(id -u) docker compose up -d

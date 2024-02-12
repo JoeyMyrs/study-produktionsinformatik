@@ -1,27 +1,28 @@
-# Auto install (Ubuntu 22.04 LTS)
-## Run install.sh script on local machine
+# Installation instructions (Ubuntu 22.04 LTS)
+## Requirements
+- Linux machine (This installation instructions are specifically for Ubuntu 22.04 LTS, can be different for other distributions)
+- git has to be installed and configured on the machine
 ```
-./install.sh
+  git config --global user.name "Max Mustermann"
+  git config --global user.email "max.mustermann@gmail.com"
 ```
-# Manuell install (Ubuntu 22.04 LTS)
 ## Install and configure Docker
 ### Install updates
 ```
 sudo apt update && sudo apt upgrade
 ```
-### Remove old Docker versions
+### Remove old Docker versions (Not needed on new machine)
 ```
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
-### Add Docker's official GPG key
+### Add Docker's official GPG key (Only for Ubuntu, see docker documentation)
 ```
-sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 ```
-### Add the repository to Apt sources
+### Add the repository to Apt sources (Only for Ubuntu, see docker documentation)
 ```
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
@@ -37,7 +38,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 ```
 sudo gpasswd -a $USER docker
 ```
-## Install and configure Smartfactory
+## Install and configure Docker infrastructure for Smartfactory
 ### Clone repository to local machine
 ```
 git clone https://github.com/JoeyMyrs/study-produktionsinformatik.git ./study-produktionsinformatik
@@ -50,12 +51,18 @@ sudo chown -R $USER:$USER ./study-produktionsinformatik
 ```
 chmod +x ./study-produktionsinformatik/start.sh ./study-produktionsinformatik/stop.sh
 ```
-## Run Smartfactory
-### Start Smartfactory
+## Run Docker infrastructure for Smartfactory
+### Start infrastructure
 ```
+cd study-produktionsinformatik
 ./start.sh
 ```
-### Stop Smartfactory
+### Stop infrastructure
 ```
+cd study-produktionsinformatik
 ./stop.sh
 ```
+### Access infrastructure
+- Node-RED: http://localhost:1880/
+- InfluxDB: http://localhost:8086/
+- Grafana: http://localhost:3000/

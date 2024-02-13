@@ -16,11 +16,12 @@
         "env": []
     },
     {
-        "id": "7008401a.b94db",
+        "id": "db4e2c1edb409494",
         "type": "tab",
-        "label": "Subscribe Multiple",
+        "label": "InfluxDB_Test",
         "disabled": false,
-        "info": "Code actually uses monitoredItemGroup"
+        "info": "",
+        "env": []
     },
     {
         "id": "658e7acbc1fcd9c6",
@@ -179,101 +180,6 @@
         "hidden": false
     },
     {
-        "id": "b59ed3ae.9ea3",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#0094ce",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
         "id": "85144921.8931b8",
         "type": "ui_group",
         "name": "OPCUA",
@@ -317,6 +223,21 @@
         "secpol": "None",
         "secmode": "None",
         "login": false
+    },
+    {
+        "id": "782506906816b2c5",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "Produktionsinformatik",
+        "name": "",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086",
+        "timeout": "10",
+        "rejectUnauthorized": false
     },
     {
         "id": "fd943775f57faf9f",
@@ -724,7 +645,7 @@
         "y": 360,
         "wires": [
             [
-                "62fbbdf658fad46a"
+                "c34c0e295def56ad"
             ],
             []
         ]
@@ -799,27 +720,10 @@
         ]
     },
     {
-        "id": "62fbbdf658fad46a",
-        "type": "debug",
-        "z": "de1d362b6add02c8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 950,
-        "y": 440,
-        "wires": []
-    },
-    {
         "id": "c34c0e295def56ad",
         "type": "function",
         "z": "de1d362b6add02c8",
-        "name": "function 1",
+        "name": "Only Value",
         "func": "if (msg.payload && msg.payload.value) {\n  var value = msg.payload.value.value;\n  msg.payload = value;\n  return msg;\n}",
         "outputs": 1,
         "timeout": 0,
@@ -827,10 +731,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 780,
-        "y": 440,
+        "x": 830,
+        "y": 380,
         "wires": [
-            []
+            [
+                "98e12b06f48a646c"
+            ]
         ]
     },
     {
@@ -880,30 +786,10 @@
         "wires": []
     },
     {
-        "id": "bbf28314.1321f",
-        "type": "function",
-        "z": "7008401a.b94db",
-        "name": "NodeId Array",
-        "func": "// Tested with Prosys\nmsg.topic = \"multiple\";\nmsg.payload = [];\nmsg.payload.push({\n    // Counter\n    nodeId: \"ns=3;i=1001\"\n});\nmsg.payload.push({\n    // Random\n    nodeId: \"ns=3;i=1002\",\n});\nmsg.payload.push({\n    // Sawtooth\n    nodeId: \"ns=3;i=1003\",\n});\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 280,
-        "wires": [
-            [
-                "244b0726.cf6e98"
-            ]
-        ]
-    },
-    {
-        "id": "700c6d99.0e7a84",
+        "id": "dfb98080243f7d73",
         "type": "inject",
-        "z": "7008401a.b94db",
-        "name": "Subscribe multiple",
+        "z": "db4e2c1edb409494",
+        "name": "",
         "props": [
             {
                 "p": "payload"
@@ -917,233 +803,87 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "multiple",
+        "topic": "",
         "payload": "",
-        "payloadType": "str",
-        "x": 310,
-        "y": 280,
+        "payloadType": "date",
+        "x": 120,
+        "y": 260,
         "wires": [
             [
-                "bbf28314.1321f"
+                "81816403d0f43f4b"
             ]
         ]
     },
     {
-        "id": "244b0726.cf6e98",
-        "type": "OpcUa-Client",
-        "z": "7008401a.b94db",
-        "endpoint": "68021f9.ba14de",
-        "action": "subscribe",
-        "deadbandtype": "a",
-        "deadbandvalue": 1,
-        "time": "1000",
-        "timeUnit": "ms",
-        "certificate": "n",
-        "localfile": "",
-        "localkeyfile": "",
-        "securitymode": "None",
-        "securitypolicy": "None",
-        "useTransport": false,
-        "maxChunkCount": "",
-        "maxMessageSize": "",
-        "receiveBufferSize": "",
-        "sendBufferSize": "",
+        "id": "81816403d0f43f4b",
+        "type": "random",
+        "z": "db4e2c1edb409494",
         "name": "",
-        "x": 900,
-        "y": 280,
+        "low": 1,
+        "high": 10,
+        "inte": "true",
+        "property": "payload",
+        "x": 300,
+        "y": 260,
         "wires": [
             [
-                "ce737735.8cd168",
-                "d0e678a9.503678"
-            ],
-            []
+                "81c11ce74309fd13"
+            ]
         ]
     },
     {
-        "id": "ce737735.8cd168",
-        "type": "debug",
-        "z": "7008401a.b94db",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1120,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "d0e678a9.503678",
+        "id": "81c11ce74309fd13",
         "type": "function",
-        "z": "7008401a.b94db",
-        "name": "Just value",
-        "func": "if (msg.payload && msg.payload.value) {\n  var value = msg.payload.value.value;\n  msg.payload = value;\n  return msg;\n}\n",
+        "z": "db4e2c1edb409494",
+        "name": "to object",
+        "func": "msg.payload = [{\n    RandomWert: msg.payload\n}];\nreturn msg;",
         "outputs": 1,
-        "timeout": "",
+        "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1130,
-        "y": 140,
+        "x": 480,
+        "y": 260,
         "wires": [
             [
-                "d26bd7f3.ee7fb8"
+                "f0858fbaa95ec962",
+                "2ca439f338f8f50a"
             ]
         ]
     },
     {
-        "id": "d26bd7f3.ee7fb8",
-        "type": "debug",
-        "z": "7008401a.b94db",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 1320,
-        "y": 140,
+        "id": "f0858fbaa95ec962",
+        "type": "influxdb out",
+        "z": "db4e2c1edb409494",
+        "influxdb": "782506906816b2c5",
+        "name": "Produktionsinformatik",
+        "measurement": "Test",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "HS",
+        "bucket": "Produktionsinformatik",
+        "x": 720,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "93d8a766.c57aa8",
-        "type": "function",
-        "z": "7008401a.b94db",
-        "name": "NodeId Array (Static variables)",
-        "func": "// Tested with Prosys static variables\nmsg.topic = \"multiple\";\nmsg.payload = [];\nmsg.payload.push({nodeId: \"ns=5;s=Boolean\"});\nmsg.payload.push({nodeId: \"ns=5;s=Double\"});\nmsg.payload.push({nodeId: \"ns=5;s=Int32\"});\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 670,
-        "y": 520,
-        "wires": [
-            [
-                "ba45b808.7ff578"
-            ]
-        ]
-    },
-    {
-        "id": "2d805dd3.473632",
-        "type": "inject",
-        "z": "7008401a.b94db",
-        "name": "Subscribe multiple",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "multiple",
-        "payload": "",
-        "payloadType": "str",
-        "x": 320,
-        "y": 520,
-        "wires": [
-            [
-                "93d8a766.c57aa8"
-            ]
-        ]
-    },
-    {
-        "id": "ba45b808.7ff578",
-        "type": "OpcUa-Client",
-        "z": "7008401a.b94db",
-        "endpoint": "68021f9.ba14de",
-        "action": "subscribe",
-        "deadbandtype": "a",
-        "deadbandvalue": 1,
-        "time": 10,
-        "timeUnit": "s",
-        "certificate": "n",
-        "localfile": "",
-        "localkeyfile": "",
-        "securitymode": "None",
-        "securitypolicy": "None",
-        "name": "",
-        "x": 910,
-        "y": 520,
-        "wires": [
-            [
-                "b47c1a47.beec88",
-                "20bed05d.ee2b7"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "b47c1a47.beec88",
+        "id": "2ca439f338f8f50a",
         "type": "debug",
-        "z": "7008401a.b94db",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 1130,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "20bed05d.ee2b7",
-        "type": "function",
-        "z": "7008401a.b94db",
-        "name": "Just value",
-        "func": "if (msg.payload && msg.payload.value) {\n  var value = msg.payload.value.value;\n  msg.payload = value;\n  return msg;\n}\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 1140,
-        "y": 380,
-        "wires": [
-            [
-                "73a247cf.4ded28"
-            ]
-        ]
-    },
-    {
-        "id": "73a247cf.4ded28",
-        "type": "debug",
-        "z": "7008401a.b94db",
-        "name": "",
+        "z": "db4e2c1edb409494",
+        "name": "debug 1",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 1330,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "d7570c98.640e1",
-        "type": "comment",
-        "z": "7008401a.b94db",
-        "name": "Instructions",
-        "info": "# topic\nmsg.topic must be \"multiple\"\n\n# payload\nmsg.paylod contains array of nodeId objects\n{\"nodeId\": \"ns=1;s=NodeIdString\"\n",
-        "x": 270,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "ee094349dafdcee5",
-        "type": "comment",
-        "z": "7008401a.b94db",
-        "name": "Publish interval 10s",
-        "info": "",
-        "x": 890,
-        "y": 480,
-        "wires": []
-    },
-    {
-        "id": "9c61142af1a5bfd5",
-        "type": "comment",
-        "z": "7008401a.b94db",
-        "name": "Publish interval 1000ms",
-        "info": "",
-        "x": 880,
-        "y": 220,
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 200,
         "wires": []
     }
 ]

@@ -20,6 +20,7 @@ services:
       - "3000:3000"
     volumes:
       - grafana-data:/var/lib/grafana
+      - grafana-conf:/etc/grafana/
 
 volumes:
   node-red-data:
@@ -39,4 +40,10 @@ volumes:
     driver_opts:
       type: volume
       device: ./docker-volumes/grafana-data
+      o: bind
+  grafana-conf:
+    driver: local
+    driver_opts:
+      type: volume
+      device: ./docker-volumes/grafana-conf
       o: bind

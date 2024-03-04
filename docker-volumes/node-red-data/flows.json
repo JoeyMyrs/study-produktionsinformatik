@@ -11,7 +11,7 @@
         "id": "fab2d58a06cfd3d1",
         "type": "tab",
         "label": "Hello_World",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -19,6 +19,22 @@
         "id": "db4e2c1edb409494",
         "type": "tab",
         "label": "InfluxDB_Test",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c6cee2daacacf45c",
+        "type": "tab",
+        "label": "MPS03 - Bearbeiten",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "dcaf45db2786b33b",
+        "type": "tab",
+        "label": "MPS08 - Handling",
         "disabled": false,
         "info": "",
         "env": []
@@ -231,13 +247,37 @@
         "port": "8086",
         "protocol": "http",
         "database": "Produktionsinformatik",
-        "name": "",
+        "name": "InfluxDB",
         "usetls": false,
         "tls": "",
         "influxdbVersion": "2.0",
-        "url": "http://localhost:8086",
+        "url": "http://influxdb:8086",
         "timeout": "10",
         "rejectUnauthorized": false
+    },
+    {
+        "id": "20ee3f355918f782",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://131.173.65.31:4840",
+        "secpol": "None",
+        "secmode": "None",
+        "none": false,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "f068e08b.3735",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://131.173.65.46:4840",
+        "secpol": "None",
+        "secmode": "None",
+        "none": false,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
     },
     {
         "id": "fd943775f57faf9f",
@@ -850,7 +890,7 @@
         "org": "hs-osnabrueck",
         "bucket": "smartfactory",
         "x": 720,
-        "y": 260,
+        "y": 280,
         "wires": []
     },
     {
@@ -884,6 +924,948 @@
             [
                 "81c11ce74309fd13"
             ]
+        ]
+    },
+    {
+        "id": "ccb76f79f60987f1",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10000",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN WorkpieceAvailable",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b80bac389963570f",
+        "type": "comment",
+        "z": "c6cee2daacacf45c",
+        "name": "Inputs",
+        "info": "",
+        "x": 110,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "fcaf448c59a1ddc8",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10001",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN WorkpieceAtDrillingUnit",
+        "x": 180,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e868551391076973",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10002",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN WorkpieceAtCheckingUnit",
+        "x": 180,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ede3f5dcaa0fe1df",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10003",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN DrillingUnitInUpperPosition",
+        "x": 190,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e9fc887058a6ae51",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10004",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN DrillingUnitInLowerPosition",
+        "x": 190,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3c9fc38060cdeb10",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10005",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN IndexingTablePositioned",
+        "x": 180,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "76a6b50c3053a6d8",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10006",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN CheckingDrillHoleOK",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce5db5bfe5b7c86a",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10007",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN DownstreamStationFree",
+        "x": 180,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a0fc90a79465a9c3",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10008",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN StartButton",
+        "x": 140,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "64a462bfee87678e",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10009",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN StopButton",
+        "x": 140,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d310e098c08a34b6",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10010",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN AutomaticManualSwitch",
+        "x": 180,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce5b63086a96c775",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10011",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN ResetButton",
+        "x": 140,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "156a7e66d8ec896b",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10013",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN EmergencyStopSignal",
+        "x": 170,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f70fdfc2f5eb79b9",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10014",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN EnableForIndexingTable",
+        "x": 180,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2295743f7925b112",
+        "type": "comment",
+        "z": "c6cee2daacacf45c",
+        "name": "Outputs",
+        "info": "",
+        "x": 530,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "132062d16dfeff9d",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10100",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT DrillingUnitMotorOn",
+        "x": 590,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3ec4e81b94d54fc2",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10101",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT IndexingTableMotorOn",
+        "x": 600,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e10d87fa1a6d216",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10102",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT LowerDrillingUnit",
+        "x": 580,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7f38333a45eddcc6",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10103",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT RaiseDrillingUnit",
+        "x": 580,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8bbb65ac9ff53e4f",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10104",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT FixingWorkpiece",
+        "x": 580,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6d0bd01c8a982c55",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10105",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT ProofingWorkpiece",
+        "x": 590,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "161a1e32ecc50836",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10106",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT PushOutWorkpiece",
+        "x": 590,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7be42203badb65f3",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10107",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT StationOccupied",
+        "x": 580,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b2ab90d00054b119",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10108",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT StartIndicatorLight",
+        "x": 590,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c062e4a75ee7a61f",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10109",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT ResetIndicatorLight",
+        "x": 590,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9a16fd8136a58754",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10110",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT WorkpieceNotOkIndicatorLightQ1",
+        "x": 630,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f9ee19efafa6859b",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10111",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT SpecialFunctionIndicatorLightQ2",
+        "x": 630,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "36087f0d1280a489",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10112",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT ExternalOutputQ4",
+        "x": 590,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "da1fd7e1bcab18cf",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10113",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT ExternalOutputQ5",
+        "x": 590,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0efe04f2eb07de2",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10114",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT StationReadyForWorkpiece",
+        "x": 620,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f51a7954c6e9725a",
+        "type": "OpcUa-Item",
+        "z": "c6cee2daacacf45c",
+        "item": "ns=4;i=10115",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT WorkpieceReady",
+        "x": 580,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e7c0e8c2a09e5fdb",
+        "type": "comment",
+        "z": "c6cee2daacacf45c",
+        "name": "Clients",
+        "info": "",
+        "x": 970,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f7f5616245e1e996",
+        "type": "OpcUa-Client",
+        "z": "c6cee2daacacf45c",
+        "endpoint": "20ee3f355918f782",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": "1",
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": "",
+        "maxMessageSize": "",
+        "receiveBufferSize": "",
+        "sendBufferSize": "",
+        "name": "MPS03 - Bearbeiten WRITE",
+        "x": 1040,
+        "y": 80,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ed91eb6bfb1d7bb8",
+        "type": "OpcUa-Client",
+        "z": "c6cee2daacacf45c",
+        "endpoint": "f068e08b.3735",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": "1",
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": "",
+        "maxMessageSize": "",
+        "receiveBufferSize": "",
+        "sendBufferSize": "",
+        "name": "MPS03 - Bearbeiten READ",
+        "x": 1040,
+        "y": 120,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "96c009acc30a05f1",
+        "type": "comment",
+        "z": "dcaf45db2786b33b",
+        "name": "Inputs",
+        "info": "",
+        "x": 110,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "3e3735c187841b74",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10000",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN WorkpieceAvailable",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4ab7157a60f1a09d",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10001",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN PickAlfaAtPreviousStation",
+        "x": 180,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2cf7325370f82104",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10002",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN PickAlfaAtNextStation",
+        "x": 170,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "85782bb2b1c148f5",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10003",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN PickAlfaAtCurrentStation",
+        "x": 180,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9ff30ef6566f8c63",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10004",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN GripperExtended",
+        "x": 160,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5fd4c4e04f291de0",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10005",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN GripperRetracted",
+        "x": 160,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4726ebf39a791fe7",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10006",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN WorkpieceIsNotBlack",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f8331f81739bbbd7",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10007",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN NextStationNotFree",
+        "x": 160,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "988c92ae52a204f4",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10008",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN StartButton",
+        "x": 140,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "117efbfbf33af0dd",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10009",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN StopButton",
+        "x": 140,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8292aaab809f2575",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10010",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN AutomaticManualSwitch",
+        "x": 180,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7fcacb8a0b5a837e",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10011",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN ResetButton",
+        "x": 140,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a05660d90369c0a2",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10013",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN EmergencyStopSignal",
+        "x": 170,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "519292e6426bf950",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10014",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN IsWorkpieceReady",
+        "x": 160,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a428d37b0851b133",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10015",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "IN JobRequested",
+        "x": 150,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cdc2d341243bd226",
+        "type": "comment",
+        "z": "dcaf45db2786b33b",
+        "name": "Outputs",
+        "info": "",
+        "x": 530,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "55d1b78ea1ae0cca",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10100",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT PickAlfaToPreviousStation",
+        "x": 610,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3ce5cec1963a50ca",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10101",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT PickAlfaToNextStation",
+        "x": 600,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "388f6ea3ec55db7e",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10102",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT ExtendGripper",
+        "x": 570,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "099c8803b6b9be67",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10103",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT OpenGripper",
+        "x": 570,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7f3f5c30e8f92403",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10107",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT StationOccupied",
+        "x": 580,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0b553007e6ec7898",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10108",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT StartIndicatorLight",
+        "x": 590,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0be94f7d296cdd3",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10109",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT ResetIndicatorLight",
+        "x": 590,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "14052b8811b672c8",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10112",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT ExternalOutputQ4",
+        "x": 590,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2c9c11e7c70c114c",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10114",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT EnableSubsequentStation",
+        "x": 610,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "95e4f62d098dfae1",
+        "type": "OpcUa-Item",
+        "z": "dcaf45db2786b33b",
+        "item": "ns=4;i=10115",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "OUT WorkpieceIsReady",
+        "x": 590,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "70f50aef8b390b14",
+        "type": "comment",
+        "z": "dcaf45db2786b33b",
+        "name": "Clients",
+        "info": "",
+        "x": 970,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4b44969bf9651b7b",
+        "type": "OpcUa-Client",
+        "z": "dcaf45db2786b33b",
+        "endpoint": "f068e08b.3735",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": "1",
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": "",
+        "maxMessageSize": "",
+        "receiveBufferSize": "",
+        "sendBufferSize": "",
+        "name": "MPS08 - Handling WRITE",
+        "x": 1030,
+        "y": 80,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "09af9f7f96ee7cbf",
+        "type": "OpcUa-Client",
+        "z": "dcaf45db2786b33b",
+        "endpoint": "f068e08b.3735",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": "1",
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": "",
+        "maxMessageSize": "",
+        "receiveBufferSize": "",
+        "sendBufferSize": "",
+        "name": "MPS08 - Handling READ",
+        "x": 1030,
+        "y": 120,
+        "wires": [
+            [],
+            []
         ]
     }
 ]
